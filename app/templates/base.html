@@ -1,0 +1,52 @@
+<html>
+  <head>
+    {% if title %}
+    <title>{{title}} - TradeFeels</title>
+    {% else %}
+    <title>TradeFeels</title>
+    {% endif %}
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+    <style>
+        body {
+            padding-top: 60px;
+            padding-bottom: 40px;
+        }
+    </style>
+  </head>
+  <body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+                <a class="brand" href="/">Feel My Finance</a>
+                <div class="nav-collapse collapse">
+                    <ul class="nav">
+                        <li><a href="/chart">Chart</a></li>
+                        <li><a href="#help">Help</a></li>
+                        <li><a href="#logout">Logout</a></li>
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <!-- Main hero unit for a primary marketing message or call to action -->
+        <div class="hero-unit">
+            {% block content %}{% endblock %}
+        </div>
+        
+        <footer>
+            <p>&copy; Hackathon 2013</p>
+        </footer>
+    </div> <!-- /container -->
+  </body>
+</html>
