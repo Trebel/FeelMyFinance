@@ -1,19 +1,31 @@
 <!-- extend base layout -->
 {% extends "base.html" %}
-
 {% block content %}
 <script type="text/javascript">
+function level(i)
+{
+alert("Welcome " + name + ", the " + job);
+}
+
   window.onload = function () {
 	var chart = new CanvasJS.Chart("chartContainer",
 	{
 
 	  title:{
-		text: "Emotional Trading Trend",
+		text: "Trading Feels",
 	  },
-	  toolTip:{             
+	  toolTip:{
 		content: function(e){
-		  var content;
-		  content = e.entries[0].dataSeries.name + " <strong>"+e.entries[0].dataPoint.y + "</strong><br />" + "Openness" + "<strong>2</strong>" ;
+		var content;
+		content = e.entries[0].dataSeries.name + " <strong>" +e.entries[0].dataPoint.y + "</strong><br />" +
+		"Stock: " + e.entries[0].dataPoint.stock + "<br />" +
+		"Price: $" + e.entries[0].dataPoint.price + "<br />" +
+		"Shares: " + e.entries[0].dataPoint.shares + "<br />" +
+		"<div class=\"progress\"><div class=\"bar\" style=\"width:" + e.entries[0].dataPoint.responsiveness + "%;\">Responsiveness</div></div>" +
+		"<div class=\"progress progress-success\"><div class=\"bar\" style=\"width:" + e.entries[0].dataPoint.diligence + "%;\">Diligence</div></div>" +
+		"<div class=\"progress progress-warning\"><div class=\"bar\" style=\"width:" + e.entries[0].dataPoint.confidence + "%;\">Confidence</div></div>" +
+		"<div class=\"progress progress-danger\"><div class=\"bar\" style=\"width:" + e.entries[0].dataPoint.forthcoming + "%;\">Forthcoming</div></div>" +
+		"<div class=\"progress progress-info progress-striped\"><div class=\"bar\" style=\"width:" + e.entries[0].dataPoint.spontaneous + "%;\">Spontaneous</div></div>"		  ;
 		  return content;
 		},
 	  },
@@ -30,19 +42,19 @@
 	  {        
 		type: "line",
 		showInLegend: true,
-		name: "Profits",
+		name: "Balance",
 		dataPoints: [
-		{ x: new Date(2010,0,3), y: -300 },
-		{ x: new Date(2010,0,5), y: 700 },
-		{ x: new Date(2010,0,7), y: 710 },
-		{ x: new Date(2010,0,9), y: 658 },
-		{ x: new Date(2010,0,11), y: 734 },
-		{ x: new Date(2010,0,13), y: 963 },
-		{ x: new Date(2010,0,15), y: 847 },
-		{ x: new Date(2010,0,17), y: 853 },
-		{ x: new Date(2010,0,19), y: 869 },
-		{ x: new Date(2010,0,21), y: 943 },
-		{ x: new Date(2010,0,23), y: 970 },
+		{ x: new Date(2010,0,3), y: 1000, stock:"Apple", price:200, shares:1000, responsiveness:100, diligence:100, confidence:100, forthcoming:100, spontaneous:100},
+		{ x: new Date(2010,0,5), y: 700, stock:"Microsoft", price:8, shares:1000, responsiveness:100, diligence:100, confidence:100, forthcoming:100, spontaneous:100 },
+		{ x: new Date(2010,0,7), y: 710, stock:"ATT", price:74, shares:1000, responsiveness:10, diligence:100, confidence:0, forthcoming:50, spontaneous:0 },
+		{ x: new Date(2010,0,9), y: 658, stock:"Apple", price:201, shares:1000, responsiveness:50, diligence:100, confidence:100, forthcoming:0, spontaneous:0},
+		{ x: new Date(2010,0,11), y: 734, stock:"Google", price:20000, shares:1000, responsiveness:50, diligence:100, confidence:50, forthcoming:100, spontaneous:50 },
+		{ x: new Date(2010,0,13), y: 963, stock:"Dell", price:89, shares:1000, responsiveness:100, diligence:50, confidence:100, forthcoming:0, spontaneous:50 },
+		{ x: new Date(2010,0,15), y: 847, stock:"HP", price:37, shares:1000, responsiveness:50, diligence:50, confidence:50, forthcoming:50, spontaneous:50 },
+		{ x: new Date(2010,0,17), y: 853, stock:"Samsung", price:38.2, shares:1000, responsiveness:0, diligence:100, confidence:0, forthcoming:100, spontaneous:50 },
+		{ x: new Date(2010,0,19), y: 869, stock:"Asus", price:8.3, shares:1000, responsiveness:100, diligence:100, confidence:100, forthcoming:100, spontaneous:0},
+		{ x: new Date(2010,0,21), y: 943, stock:"Linux", price:2.4, shares:1000, responsiveness:50, diligence:0, confidence:100, forthcoming:50, spontaneous:100 },
+		{ x: new Date(2010,0,23), y: 970, stock:"Linux", price:2.3, shares:1000, responsiveness:50, diligence:50, confidence:50, forthcoming:50, spontaneous:50 },
 		]
 	  },
 	  ]
